@@ -27,7 +27,12 @@ const io = new Server(expressServer, {
 
 io.on('connection', socket => {
   console.log(`User ${socket.id} connected`)
+  // On connection - for connected user only
+  socket.emit('message', 'Welcome to Chat App <3')
+  // On connection - for everyone, except user (because of broadcast)
+  socket.broadcast.emit('message', `User ${socket.id.substring(0, 5)} connected`)
 
+  // Listening for events (emits)
   socket.on('message', data => {
     console.log(data)
     io.emit('message', `${socket.id.substring(0, 5)}: ${data}`)
@@ -35,5 +40,10 @@ io.on('connection', socket => {
 
   socket.on('disconnect', () => {
     console.log(`User ${socket.id} disconnected`);
+    socket.broadcast.emit('message', `User ${socket.id.substring(0, 5)} disconnected`)
   });
+
+  socket.on('typing', (userName) => {
+    socket.broadcast.emit('typing', userName)
+  })
 })
