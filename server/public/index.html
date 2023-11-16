@@ -6,19 +6,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chat App</title>
   <link rel="stylesheet" href="./style.css">
-  <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
+  <script src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+    integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+    crossorigin="anonymous"></script>
   <script defer src="./app.js"></script>
 </head>
 
 <body>
-  <form>
-    <input type="text" name="message" id="message">
-    <button type="submit">Send</button>
-  </form>
+  <main>
+    <form id="join-chat">
+      <input type="text" id="name" placeholder="Name" required />
+      <input type="text" id="chat-room" placeholder="Chat room" required />
+      <button id="join" type="submit">Join</button>
+    </form>
 
-  <ul class="messages-list"></ul>
+    <div id="chat">
+      <header>Welcome to Chat App <3</header>
+      <div class="messages">
+      </div>
+      <footer>
+        <div class="is-typing-bar">
+          dasdasdas is typing...
+        </div>
+        <ul id="users">Users in chat: dasdas
+          <li>sdasd,</li>
+          <li>dasd,</li>
+          <li>sadas,</li>
+        </ul>
+      </footer>
+    </div>
 
-  <p class="is-typing-message"></p>
+    <ul id="rooms">Active chat rooms:
+      <li>sdasd,</li>
+      <li>dasd,</li>
+      <li>sadas,</li>
+    </ul>
+
+    <form id="send-message">
+      <input type="text" id="message" placeholder="Type your message here" required>
+      <button type="submit">Send</button>
+    </form>
+  </main>
 </body>
 
 </html>
